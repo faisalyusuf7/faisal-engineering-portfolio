@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.cache/
+node_modules/
+
+# Keep local source archives out of the public portfolio repo.
+/ANSYS/
+/Fidget Toy/
+/Pentagon Robot/
+/Phone Stand/
+/Faisal_Resume_2026_2.pdf
