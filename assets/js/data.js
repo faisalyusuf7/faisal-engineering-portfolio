@@ -116,12 +116,6 @@ const projects = [
         alt: "Temperature result with convection and radiation",
       },
     ],
-    documents: [
-      {
-        label: "Simulation Report",
-        href: "assets/media/projects/ansys-exhaust-manifold/exhaust-manifold-report.pdf",
-      },
-    ],
   },
   {
     slug: "cantilever-bridge",
