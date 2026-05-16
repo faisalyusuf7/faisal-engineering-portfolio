@@ -2,6 +2,7 @@
 Thumbs.db
 desktop.ini
 *.log
+*.heic
 .cache/
 node_modules/
 

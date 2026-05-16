@@ -48,6 +48,10 @@ const projects = [
         alt: "Mechanical assembly detail for the Pentagon Robot",
       },
       {
+        src: "assets/media/projects/pentagon-robot/photo-output.jpg",
+        alt: "Pentagon Robot photo collage showing the five-bar arm, end effector, and ping pong ball pick-and-place setup",
+      },
+      {
         src: "assets/media/projects/pentagon-robot/cad-workspace.png",
         alt: "CAD workspace for the five-bar robot",
       },
