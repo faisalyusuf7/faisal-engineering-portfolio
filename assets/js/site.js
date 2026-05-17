@@ -169,7 +169,7 @@ function youtubeSection(project) {
       </div>
       <div class="video-frame">
         <iframe
-          src="https://www.youtube.com/embed/${project.youtubeId}"
+          src="https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&playsinline=1&rel=0"
           title="${project.title} video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>

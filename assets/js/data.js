@@ -6,8 +6,9 @@ const projects = [
     category: "Robotics",
     year: "August 2025 - May 2026",
     role: "Mechanical design, controls integration, prototyping",
-    hero: "assets/media/projects/pentagon-robot/expo-poster.jpeg",
-    thumbnail: "assets/media/projects/pentagon-robot/expo-poster.jpeg",
+    hero: "assets/media/projects/pentagon-robot/expo-poster.jpg",
+    thumbnail: "assets/media/projects/pentagon-robot/expo-poster.jpg",
+    youtubeId: "VL2kFgpxKj4",
     summary:
       "Autonomous five-bar parallel planar robot designed for fast pick-and-place cycles, workspace validation, and low-cost scalable prototyping.",
     challenge:
@@ -32,7 +33,7 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/pentagon-robot/expo-poster.jpeg",
+        src: "assets/media/projects/pentagon-robot/expo-poster.jpg",
         alt: "Faisal presenting the Pentagon Robot project at the UIC Engineering Expo",
       },
       {
