@@ -4,7 +4,7 @@ const projects = [
     title: "Pentagon Robot",
     subtitle: "Five-bar parallel arm pick-and-place automation",
     category: "Robotics",
-    year: "2025 - Present",
+    year: "August 2025 - May 2026",
     role: "Mechanical design, controls integration, prototyping",
     hero: "assets/media/projects/pentagon-robot/expo-poster.jpeg",
     thumbnail: "assets/media/projects/pentagon-robot/expo-poster.jpeg",
@@ -233,9 +233,9 @@ const profile = {
   linkedin: "https://linkedin.com/in/mechengineerfaisal",
   resume: "assets/media/resume/faisal-ughratdar-resume.pdf",
   degree: "B.S. Mechanical Engineering, University of Illinois Chicago",
-  graduation: "Expected May 2026",
+  graduation: "Graduated May 2026",
   summary:
-    "Mechanical engineering student at UIC building across robotics, CAD, simulation, manufacturing, and controls. I like projects where the model, the hardware, and the test data all have to agree.",
+    "Mechanical engineering graduate from UIC building across robotics, CAD, simulation, manufacturing, and controls. I like projects where the model, the hardware, and the test data all have to agree.",
   skills: [
     "SolidWorks",
     "AutoCAD",

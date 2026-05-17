@@ -25,7 +25,7 @@ Build a GitHub Pages-ready engineering portfolio for Faisal Yusuf Ughratdar, ins
 
 - Name: Faisal Yusuf Ughratdar
 - Location: Chicago, IL
-- Education: B.S. Mechanical Engineering, University of Illinois Chicago, expected May 2026
+- Education: B.S. Mechanical Engineering, University of Illinois Chicago, graduated May 2026
 - Email: `faisalyusufd@gmail.com`
 - LinkedIn: `https://linkedin.com/in/mechengineerfaisal`
 - Resume PDF: `assets/media/resume/faisal-ughratdar-resume.pdf`
