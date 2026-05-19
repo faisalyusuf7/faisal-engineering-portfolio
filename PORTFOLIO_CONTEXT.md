@@ -35,6 +35,8 @@ Build a GitHub Pages-ready engineering portfolio for Faisal Yusuf Ughratdar, ins
 Projects are currently rendered from `assets/js/data.js`.
 
 - `pentagon-robot`: robotics flagship project, uses expo photo as hero.
+- `microscopy-image-classification`: Spring 2026 Python image-classification project.
+- `residential-hvac-load-analysis`: Spring 2026 residential HVAC heating/cooling load model with workbook plots.
 - `ansys-exhaust-manifold`: ANSYS thermal/structural simulation project.
 - `cantilever-bridge`: CAD drawing and strain/bridge analysis project.
 - `fidget-toy`: CAD and FDM printed prototype.
@@ -53,6 +55,8 @@ The project detail page will automatically render the embedded player when this 
 Original user folders are preserved. Web-facing media has been copied and renamed into:
 
 - `assets/media/projects/pentagon-robot/`
+- `assets/media/projects/microscopy-image-classification/`
+- `assets/media/projects/residential-hvac-load-analysis/`
 - `assets/media/projects/ansys-exhaust-manifold/`
 - `assets/media/projects/cantilever-bridge/`
 - `assets/media/projects/fidget-toy/`

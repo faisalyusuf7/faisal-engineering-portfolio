@@ -358,6 +358,18 @@ a {
   opacity: 0.58;
 }
 
+.project-card--plain {
+  background:
+    linear-gradient(145deg, rgba(36, 49, 63, 0.96), rgba(23, 23, 23, 0.98)),
+    var(--steel);
+}
+
+.project-card--plain .project-card__body {
+  top: auto;
+  padding-top: 92px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.44), rgba(0, 0, 0, 0));
+}
+
 .project-card__category {
   position: absolute;
   left: 16px;
@@ -491,6 +503,12 @@ a {
   overflow: hidden;
   color: var(--white);
   background: var(--ink);
+}
+
+.project-hero--no-media {
+  background:
+    linear-gradient(120deg, rgba(36, 49, 63, 0.96), rgba(23, 23, 23, 0.98)),
+    var(--steel);
 }
 
 .project-hero img {

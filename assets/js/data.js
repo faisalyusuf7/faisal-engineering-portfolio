@@ -5,29 +5,31 @@ const projects = [
     subtitle: "Five-bar parallel arm pick-and-place automation",
     category: "Robotics",
     year: "August 2025 - May 2026",
-    role: "Mechanical design, controls integration, prototyping",
+    role: "Mechanical design, fabrication, controls integration",
     hero: "assets/media/projects/pentagon-robot/expo-poster.jpg",
     thumbnail: "assets/media/projects/pentagon-robot/expo-poster.jpg",
     youtubeId: "VL2kFgpxKj4",
     summary:
-      "Autonomous five-bar parallel planar robot designed for fast pick-and-place cycles, workspace validation, and low-cost scalable prototyping.",
+      "Low-cost five-bar pick-and-place robot designed and fabricated to transfer ping-pong balls between matrix locations.",
     challenge:
       "Develop a compact robotic system capable of repeatable object placement while balancing stiffness, speed, cost, and controls complexity.",
     approach:
-      "Built the mechanical assembly in SolidWorks, validated motion and link interference, selected dual NEMA 17 stepper motors, and integrated Raspberry Pi and Arduino hardware for inverse kinematics and real-time motor control.",
+      "Modeled the full assembly in SolidWorks, exported URDF into ROS 2/RViz2 to validate reachability and clearances, and built a hybrid Raspberry Pi 4 plus Arduino UNO/CNC Shield controls architecture.",
     outcome:
-      "Targeted cycle times under 5 seconds and placement accuracy within +/-0.5 mm while keeping the prototype budget near $350.",
+      "Targeted cycle times of 10 seconds or less and placement accuracy within +/-0.5 mm while keeping the prototype budget near $350.",
     skills: [
       "SolidWorks",
-      "Model-Based Design",
-      "Inverse Kinematics",
+      "URDF/RViz2",
+      "ROS 2",
       "Arduino",
       "Raspberry Pi",
-      "Motion Simulation",
+      "CNC Shield",
+      "Stepper Motor Control",
+      "Sensors",
       "DFM",
     ],
     stats: [
-      { value: "<5s", label: "target cycle time" },
+      { value: "<=10s", label: "target cycle time" },
       { value: "+/-0.5 mm", label: "placement target" },
       { value: "$350", label: "prototype budget" },
     ],
@@ -69,6 +71,114 @@ const projects = [
       {
         label: "Project Poster",
         href: "assets/media/projects/pentagon-robot/pentagon-robot-poster.pdf",
+      },
+    ],
+  },
+  {
+    slug: "microscopy-image-classification",
+    title: "Microscopy Image Classification",
+    subtitle: "Python machine-learning workflow for COMI BPAEC images",
+    category: "Machine Learning",
+    year: "Spring 2026",
+    role: "Python modeling, validation, performance analysis",
+    hero: "assets/media/projects/microscopy-image-classification/sample-train-images.png",
+    thumbnail: "assets/media/projects/microscopy-image-classification/sample-train-images.png",
+    summary:
+      "Image-classification workflow comparing traditional machine learning, a custom CNN, and transfer learning for microscopy image classes.",
+    challenge:
+      "Classify 2,079 COMI BPAEC microscopy images across actin, mitochondria, and nucleus classes while reducing leakage risk in the data split.",
+    approach:
+      "Built a Python pipeline with group-based train, validation, and test splits, then compared Random Forest with PCA, a custom CNN, and ResNet18 transfer learning.",
+    outcome:
+      "Achieved 95.96% test accuracy and 95.93% macro F1 with Random Forest plus PCA on a 297-image held-out test set.",
+    skills: ["Python", "PyTorch", "scikit-learn", "Random Forest", "PCA", "CNN", "ResNet18"],
+    stats: [
+      { value: "2,079", label: "source images" },
+      { value: "95.96%", label: "test accuracy" },
+      { value: "95.93%", label: "macro F1" },
+    ],
+    gallery: [
+      {
+        src: "assets/media/projects/microscopy-image-classification/model-comparison-chart.png",
+        alt: "Model comparison chart for random forest, baseline CNN, and ResNet18 metrics",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/confusion-matrix-comparison.png",
+        alt: "Cross-model confusion matrix comparison for microscopy image classification",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/classwise-f1-comparison.png",
+        alt: "Classwise F1 score comparison across model types",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/rf-featurization-panel.png",
+        alt: "Random forest PCA featurization panel showing original image, resized image, and flattened vector",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/rf-pca-reconstructions.png",
+        alt: "PCA reconstruction comparison showing image quality across principal component counts",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/rf-pca-scatter.png",
+        alt: "PCA scatter plots comparing train and test image feature projections",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/resnet-gradcam-examples.png",
+        alt: "ResNet18 Grad-CAM examples showing attention regions for microscopy image predictions",
+      },
+      {
+        src: "assets/media/projects/microscopy-image-classification/resnet-embedding-projection.png",
+        alt: "ResNet18 embedding projection showing class separation across actin, mitochondria, and nucleus",
+      },
+    ],
+  },
+  {
+    slug: "residential-hvac-load-analysis",
+    title: "Residential HVAC Load Analysis",
+    subtitle: "Heating and cooling load model for a Chicago residence",
+    category: "Thermal",
+    year: "Spring 2026",
+    role: "HVAC load calculations, heat transfer, Excel modeling",
+    hero: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+    thumbnail: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+    summary:
+      "Excel-based HVAC load model calculating heating and cooling requirements for a 1,000 ft2 Chicago residence.",
+    challenge:
+      "Estimate envelope, infiltration, solar, and cooling response loads clearly enough to size residential HVAC capacity.",
+    approach:
+      "Calculated envelope U-values, effective leakage area infiltration, solar radiation, sol-air temperature, and CTS/RTS cooling response in Excel.",
+    outcome:
+      "Calculated a peak heating load of 23,148 Btu/h and peak total cooling load of 14,993 Btu/h at 14:00, equivalent to 1.25 tons of cooling capacity.",
+    skills: ["Excel", "HVAC Load Calculations", "Heat Transfer", "CTS/RTS Methods", "Solar Loads", "Thermal Analysis"],
+    stats: [
+      { value: "1,000 ft2", label: "residence modeled" },
+      { value: "23,148", label: "Btu/h heating peak" },
+      { value: "1.25 tons", label: "cooling capacity" },
+    ],
+    gallery: [
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+        alt: "Hourly cooling load chart with sensible, latent, and total cooling loads",
+      },
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/heating-load.png",
+        alt: "Peak heating load by building component",
+      },
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/infiltration.png",
+        alt: "Hourly infiltration chart with flow and sensible load",
+      },
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/sol-air.png",
+        alt: "Sol-air temperature by building surface over 24 hours",
+      },
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/solar.png",
+        alt: "Total solar irradiation by surface over 24 hours",
+      },
+      {
+        src: "assets/media/projects/residential-hvac-load-analysis/weather.png",
+        alt: "Hourly outdoor design dry-bulb temperature",
       },
     ],
   },
@@ -236,23 +346,36 @@ const profile = {
   degree: "B.S. Mechanical Engineering, University of Illinois Chicago",
   graduation: "Graduated May 2026",
   summary:
-    "Mechanical engineering graduate from UIC building across robotics, CAD, simulation, manufacturing, and controls. I like projects where the model, the hardware, and the test data all have to agree.",
+    "Mechanical engineering graduate from UIC building across robotics, CAD, simulation, HVAC analysis, manufacturing, controls, and data-driven modeling. I like projects where the model, the hardware, and the test data all have to agree.",
   skills: [
     "SolidWorks",
     "AutoCAD",
+    "Revit",
     "ANSYS",
+    "ANSYS Mechanical/Fluent",
     "Python",
     "MATLAB",
     "C++",
+    "PyTorch",
+    "scikit-learn",
+    "Random Forest",
+    "CNN/ResNet18",
+    "Excel",
     "Arduino",
     "Raspberry Pi",
     "ROS 2",
+    "URDF/RViz2",
+    "CNC Shield",
     "CNC Machining",
     "FDM 3D Printing",
     "GD&T",
+    "DFM",
+    "BOMs",
+    "HVAC Load Calculations",
+    "Heat Transfer",
+    "CTS/RTS Methods",
     "FEA",
     "CFD",
-    "Thermal Analysis",
   ],
 };
 

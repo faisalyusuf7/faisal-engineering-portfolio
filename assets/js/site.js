@@ -15,8 +15,8 @@ function bySlug(slug) {
 
 function projectCard(project) {
   return `
-    <a class="project-card" href="project.html?slug=${project.slug}" data-category="${project.category}">
-      <img src="${project.thumbnail}" alt="${project.title}" loading="lazy">
+    <a class="project-card ${project.thumbnail ? "" : "project-card--plain"}" href="project.html?slug=${project.slug}" data-category="${project.category}">
+      ${project.thumbnail ? `<img src="${project.thumbnail}" alt="${project.title}" loading="lazy">` : ""}
       <span class="project-card__category">${project.category}</span>
       <div class="project-card__body">
         <p>${project.year}</p>
@@ -94,11 +94,12 @@ function renderProjectPage() {
   const params = new URLSearchParams(window.location.search);
   const project = bySlug(params.get("slug"));
   document.title = `${project.title} | ${profile.name}`;
+  const projectGallery = project.gallery || [];
 
   mount.innerHTML = `
-    <section class="project-hero">
-      <img src="${project.hero}" alt="${project.title}">
-      <div class="project-hero__overlay"></div>
+    <section class="project-hero ${project.hero ? "" : "project-hero--no-media"}">
+      ${project.hero ? `<img src="${project.hero}" alt="${project.title}">` : ""}
+      ${project.hero ? `<div class="project-hero__overlay"></div>` : ""}
       <div class="project-hero__content shell">
         <a class="back-link" href="projects.html">Back to projects</a>
         <p>${project.category} / ${project.year}</p>
@@ -140,13 +141,14 @@ function renderProjectPage() {
 
     ${project.youtubeId ? youtubeSection(project) : ""}
 
-    <section class="section shell">
+    ${projectGallery.length ? `
+      <section class="section shell">
       <div class="section-heading">
         <p class="eyebrow">Media</p>
         <h2>Project Gallery</h2>
       </div>
       <div class="media-grid">
-        ${project.gallery
+        ${projectGallery
           .map(
             (image) => `
               <button class="media-tile" type="button" data-lightbox="${image.src}" data-alt="${image.alt}">
@@ -157,6 +159,7 @@ function renderProjectPage() {
           .join("")}
       </div>
     </section>
+    ` : ""}
   `;
 }
 
