@@ -35,10 +35,6 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/pentagon-robot/expo-poster.jpg",
-        alt: "Faisal presenting the Pentagon Robot project at the UIC Engineering Expo",
-      },
-      {
         src: "assets/media/projects/pentagon-robot/build-view-1.jpeg",
         alt: "Pentagon Robot prototype front view",
       },
