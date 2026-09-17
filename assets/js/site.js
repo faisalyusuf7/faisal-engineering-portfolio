@@ -95,6 +95,13 @@ function renderProjectPage() {
   const params = new URLSearchParams(window.location.search);
   const project = bySlug(params.get("slug"));
   document.title = `${project.title} | ${profile.name}`;
+  const canonical = `https://mechengrfaisal.com/project.html?slug=${encodeURIComponent(project.slug)}`;
+  qs('link[rel="canonical"]').href = canonical;
+  qs('meta[property="og:url"]').content = canonical;
+  qs('meta[property="og:title"]').content = document.title;
+  qs('meta[name="description"]').content = project.summary;
+  qs('meta[property="og:description"]').content = project.summary;
+  if (project.hero) qs('meta[property="og:image"]').content = new URL(project.hero, 'https://mechengrfaisal.com/').href;
   const projectGallery = project.gallery || [];
 
   mount.innerHTML = `

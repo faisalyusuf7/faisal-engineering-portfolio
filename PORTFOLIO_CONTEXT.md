@@ -88,6 +88,7 @@ The workflow uploads the static site directly from the repository root.
 - Homepage features Pentagon Robot CAD, followed by robotics, ANSYS, and a fabricated product design.
 - Existing project records and resume PDF preserved.
 - Lean Six Sigma Green Belt certificate (Council for Six Sigma Certification, July 20, 2026) added to homepage, About, and Resume. Original PDF and preview are in assets/media/certifications/.
-- Domain purchased through GoDaddy: mechengrfaisal.com. Domain migration has NOT been performed.
-- Current live site: https://faisalyusuf7.github.io/faisal-engineering-portfolio/
+- Domain purchased through GoDaddy: mechengrfaisal.com. GitHub Pages custom domain configured; GoDaddy A records and www CNAME verified. HTTPS certificate provisioning pending.
+- Primary domain: https://mechengrfaisal.com/
+- Previous site: https://faisalyusuf7.github.io/faisal-engineering-portfolio/
 - Local preview: python -m http.server 8765 --bind 127.0.0.1
