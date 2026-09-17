@@ -779,3 +779,66 @@ p {
   transition:none!important;
   animation:none!important}
 }
+
+/* Small, purposeful interactions; all remain usable without animation. */
+.reading-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+.site-header { transition: box-shadow 220ms ease; }
+.site-header.is-scrolled { box-shadow: 0 5px 20px #00000009; }
+.project-card__image, .media-tile, .skills-cloud span, .filter-pill, .theme-toggle {
+  transition: border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+.project-card:focus-visible .project-card__image { border-color: var(--blue); }
+.card-arrow, .circle-arrow, .button > span, .text-link > span {
+  transition: transform 220ms ease;
+}
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.nav-links a:hover::before, .nav-links a:focus-visible::before { transform: scaleX(1); }
+.button:active, .filter-pill:active, .theme-toggle:active { transform: scale(.97); }
+.theme-toggle:hover { border-color: var(--blue); }
+@media (hover: hover) and (pointer: fine) {
+  .hero-drawing {
+    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform 260ms ease-out, box-shadow 260ms ease;
+  }
+  .hero-drawing:hover { box-shadow: var(--shadow); }
+  .hero-drawing:hover .circle-arrow, .project-card:hover .card-arrow,
+  .button:hover > span, .text-link:hover > span { transform: translate(2px, -2px); }
+  .project-card:hover .project-card__image { border-color: var(--blue); box-shadow: var(--shadow); }
+  .media-tile:hover { transform: translateY(-3px); border-color: var(--blue); }
+  .skills-cloud span:hover { transform: translateY(-3px); background: var(--tint); border-color: var(--blue); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-links.is-open { animation: menu-enter 180ms ease-out; }
+  .lightbox[open] { animation: dialog-enter 200ms ease-out; }
+  @keyframes menu-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes dialog-enter { from { opacity: 0; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-drawing, .media-tile:hover, .skills-cloud span:hover,
+  .project-card:hover img, .button:hover, .button:active,
+  .filter-pill:active, .theme-toggle:active { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-arrow, .circle-arrow, .button > span, .text-link > span { transform: none !important; }
+}

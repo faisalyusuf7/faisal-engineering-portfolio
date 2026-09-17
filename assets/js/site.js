@@ -63,6 +63,7 @@ function renderAllProjects() {
     const filter = button.dataset.filter;
     const filtered = filter === "All" ? projects : projects.filter((project) => project.category === filter);
     grid.innerHTML = filtered.map(projectCard).join("");
+    animateCards(grid);
   });
 }
 
@@ -273,6 +274,83 @@ function setupMobileNav() {
   });
 }
 
+function animateCards(grid) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  qsa('.project-card', grid).forEach((card, index) => {
+    if (!card.animate) return;
+    card.animate([
+      { opacity: 0, transform: 'translateY(18px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 440, delay: Math.min(index, 5) * 55, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+  });
+}
+
+function setupMotion() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const header = qs('.site-header');
+  const progress = document.createElement('div');
+  progress.className = 'reading-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  header.appendChild(progress);
+
+  let scheduled = false;
+  function updateScroll() {
+    scheduled = false;
+    const range = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0})`;
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+  }
+  function scheduleScroll() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateScroll);
+  }
+  window.addEventListener('scroll', scheduleScroll, { passive: true });
+  window.addEventListener('resize', scheduleScroll);
+  window.addEventListener('load', scheduleScroll);
+  updateScroll();
+
+  // Animate only at entry; content remains visible if scripts or observers fail.
+  let observer;
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        if (reducedMotion.matches || !entry.target.animate) return;
+        entry.target.animate([
+          { opacity: 0, transform: 'translateY(22px)' },
+          { opacity: 1, transform: 'translateY(0)' },
+        ], { duration: 600, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      });
+    }, { threshold: 0.08 });
+    qsa('.hero-copy, .hero-drawing, .section-heading, .intro-copy, .signal-board, .timeline-item, .project-card, .certification, .closing, .story-columns article, .project-panel').forEach(node => observer.observe(node));
+  }
+
+  const drawing = qs('.hero-drawing');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  if (drawing) {
+    drawing.addEventListener('pointermove', event => {
+      if (reducedMotion.matches || !finePointer.matches) return;
+      const bounds = drawing.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      drawing.style.setProperty('--tilt-x', `${-y * 4}deg`);
+      drawing.style.setProperty('--tilt-y', `${x * 4}deg`);
+    });
+    const resetTilt = () => {
+      drawing.style.removeProperty('--tilt-x');
+      drawing.style.removeProperty('--tilt-y');
+    };
+    drawing.addEventListener('pointerleave', resetTilt);
+    drawing.addEventListener('pointercancel', resetTilt);
+    reducedMotion.addEventListener('change', resetTilt);
+  }
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) document.getAnimations().forEach(animation => animation.cancel());
+  });
+}
+
 function setupTheme() {
   const button = qs('[data-theme-toggle]');
   function update() {
@@ -298,4 +376,5 @@ setupScrollVideo();
 renderSkills();
 setupLightbox();
 setupMobileNav();
+setupMotion();
 })();
