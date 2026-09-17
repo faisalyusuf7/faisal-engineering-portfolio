@@ -180,13 +180,68 @@ function youtubeSection(project) {
       </div>
       <div class="video-frame">
         <iframe
-          src="https://www.youtube.com/embed/${project.youtubeId}?playsinline=1&rel=0"
+          data-scroll-video
+          src="https://www.youtube.com/embed/${project.youtubeId}?enablejsapi=1&mute=1&playsinline=1&rel=0&origin=${encodeURIComponent(window.location.origin)}"
           loading="lazy" title="${project.title} video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
       </div>
     </section>
   `;
+}
+
+function setupScrollVideo() {
+  const iframe = qs('[data-scroll-video]');
+  if (!iframe || !('IntersectionObserver' in window)) return;
+
+  let player;
+  let ready = false;
+  let inView = false;
+  const shouldPlay = () => inView && !document.hidden;
+  function syncPlayback() {
+    if (!ready) return;
+    if (shouldPlay()) player.playVideo();
+    else player.pauseVideo();
+  }
+
+  // Observe the wrapper so YouTube's iframe initialization cannot detach the target.
+  const observer = new IntersectionObserver(([entry]) => {
+    const visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+    if (visible === inView) return;
+    inView = visible;
+    syncPlayback();
+  }, { threshold: [0, 0.35], rootMargin: '-88px 0px 0px 0px' });
+  observer.observe(iframe.parentElement);
+  document.addEventListener('visibilitychange', syncPlayback);
+  window.addEventListener('pagehide', () => { if (ready) player.pauseVideo(); });
+  window.addEventListener('pageshow', syncPlayback);
+
+  function initializePlayer() {
+    player = new window.YT.Player(iframe, {
+      events: {
+        onReady(event) {
+          player = event.target;
+          player.mute();
+          ready = true;
+          syncPlayback();
+        },
+        onStateChange(event) {
+          // Catch playback that begins after the visitor has already scrolled away.
+          if (event.data === window.YT.PlayerState.PLAYING && !shouldPlay()) {
+            event.target.pauseVideo();
+          }
+        },
+      },
+    });
+  }
+
+  if (window.YT && window.YT.Player) initializePlayer();
+  else {
+    window.onYouTubeIframeAPIReady = initializePlayer;
+    const script = document.createElement('script');
+    script.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(script);
+  }
 }
 
 function setupLightbox() {
@@ -239,6 +294,7 @@ renderProfileText();
 renderFeaturedProjects();
 renderAllProjects();
 renderProjectPage();
+setupScrollVideo();
 renderSkills();
 setupLightbox();
 setupMobileNav();
