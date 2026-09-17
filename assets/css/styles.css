@@ -229,7 +229,7 @@ p {
   margin:0 12px;
   color:var(--blue)}
 .hero-drawing {
-  align-self:stretch;
+  align-self:center;
   display:flex;
   flex-direction:column;
   text-decoration:none;
@@ -248,13 +248,12 @@ p {
   letter-spacing:.08em;
   color:var(--muted)}
 .drawing-art {
-  flex:1;
   display:grid;
   place-items:center;
-  padding:18px 25px}
+  padding:0}
 .drawing-art img {
   width:100%;
-  max-height:420px;
+  max-height:none;
   object-fit:contain;
   mix-blend-mode:multiply}
 :root[data-theme=dark] .drawing-art img {
@@ -327,14 +326,15 @@ p {
   flex-direction:column;
   min-width:0}
 .project-card__image {
-  background:#eef0eb;
+  background:var(--tint);
   position:relative;
   overflow:hidden;
   border:1px solid var(--line);
-  aspect-ratio:1.28}
+  border-radius:8px;
+  align-self:start;}
 .project-card img {
   width:100%;
-  height:100%;
+  height:auto;
   object-fit:contain;
   transition:transform .35s}
 .project-card:hover img {
@@ -435,8 +435,10 @@ p {
   align-items:center}
 .certificate-image {
   display:block;
-  padding:12px;
-  background:#fff;
+  padding:0;
+  overflow:hidden;
+  border-radius:6px;
+  background:var(--tint);
   box-shadow:var(--shadow);
   border:1px solid var(--line);
   transform:rotate(-2deg);
@@ -504,10 +506,13 @@ p {
 .project-hero>img {
   grid-column:2;
   grid-row:1;
-  width:100%;
+  width:auto;
+  height:auto;
+  justify-self:center;
+  border-radius:8px;
   max-height:440px;
   object-fit:contain;
-  background:#eef0eb;
+  background:var(--tint);
   border:1px solid var(--line)}
 .project-hero__overlay {
   display:none}
@@ -569,15 +574,23 @@ p {
 .media-grid {
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:24px}
+  gap:24px;
+  align-items:start}
 .media-tile {
-  padding:16px;
-  background:#f1f2ee;
+  padding:0;
+  overflow:hidden;
+  border-radius:8px;
+  justify-self:center;
+  max-width:100%;
+  background:var(--tint);
   border:1px solid var(--line);
   display:grid;
   place-items:center}
 .media-tile img {
-  max-height:420px;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:520px;
   object-fit:contain}
 .video-frame {
   aspect-ratio:16/9;
@@ -697,9 +710,9 @@ p {
 .hero .eyebrow {
   font-size:9px}
 .drawing-art img {
-  max-height:330px}
+  max-height:none}
 .drawing-art {
-  padding:16px 40px}
+  padding:0}
 .drawing-header {
   font-size:8px}
 .discipline-strip .shell {
@@ -719,7 +732,7 @@ p {
   grid-template-columns:1fr;
   gap:38px}
 .project-card__image {
-  aspect-ratio:1.5}
+  aspect-ratio:auto}
 .project-card__body>span {
   max-width:none}
 .project-card__category {
@@ -842,3 +855,8 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .card-arrow, .circle-arrow, .button > span, .text-link > span { transform: none !important; }
 }
+
+/* Let the frame follow the image instead of imposing a padded canvas. */
+.project-card__image { width:100%; }
+.hero-drawing { border-radius:8px; overflow:hidden; }
+.certificate-image img { width:100%; height:auto; }
