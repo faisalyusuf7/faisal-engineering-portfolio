@@ -81,3 +81,13 @@ The repo can be deployed to GitHub Pages either by:
 2. Or using GitHub Desktop/GitHub app to publish the folder, then selecting the GitHub Pages workflow.
 
 The workflow uploads the static site directly from the repository root.
+
+## September 2026 redesign
+- Audience: mechanical design and robotics roles.
+- Light-default engineering journal design; dark theme saved in localStorage, initialized by assets/js/theme.js.
+- Homepage features Pentagon Robot CAD, followed by robotics, ANSYS, and a fabricated product design.
+- Existing project records and resume PDF preserved.
+- Lean Six Sigma Green Belt certificate (Council for Six Sigma Certification, July 20, 2026) added to homepage, About, and Resume. Original PDF and preview are in assets/media/certifications/.
+- Domain purchased through GoDaddy: mechengrfaisal.com. Domain migration has NOT been performed.
+- Current live site: https://faisalyusuf7.github.io/faisal-engineering-portfolio/
+- Local preview: python -m http.server 8765 --bind 127.0.0.1

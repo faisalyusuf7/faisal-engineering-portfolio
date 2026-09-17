@@ -16,7 +16,7 @@ function bySlug(slug) {
 function projectCard(project) {
   return `
     <a class="project-card ${project.thumbnail ? "" : "project-card--plain"}" href="project.html?slug=${project.slug}" data-category="${project.category}">
-      ${project.thumbnail ? `<img src="${project.thumbnail}" alt="${project.title}" loading="lazy">` : ""}
+      ${project.thumbnail ? `<div class="project-card__image"><img src="${project.thumbnail}" alt="${project.title}" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>` : ""}
       <span class="project-card__category">${project.category}</span>
       <div class="project-card__body">
         <p>${project.year}</p>
@@ -34,7 +34,7 @@ function renderProjectGrid(selector, list = projects) {
 }
 
 function renderFeaturedProjects() {
-  renderProjectGrid("[data-featured-projects]", projects.slice(0, 3));
+  renderProjectGrid("[data-featured-projects]", ["pentagon-robot", "ansys-exhaust-manifold", "fidget-toy"].map(bySlug));
 }
 
 function renderAllProjects() {
@@ -46,7 +46,7 @@ function renderAllProjects() {
   filters.innerHTML = categories
     .map(
       (category, index) =>
-        `<button class="filter-pill ${index === 0 ? "is-active" : ""}" type="button" data-filter="${category}">${category}</button>`
+        `<button class="filter-pill ${index === 0 ? "is-active" : ""}" type="button" aria-pressed="${index === 0}" data-filter="${category}">${category}</button>`
     )
     .join("");
 
@@ -56,7 +56,8 @@ function renderAllProjects() {
     const button = event.target.closest("button");
     if (!button) return;
 
-    qsa(".filter-pill", filters).forEach((pill) => pill.classList.remove("is-active"));
+    qsa(".filter-pill", filters).forEach((pill) => { pill.classList.remove("is-active"); pill.setAttribute("aria-pressed", "false"); });
+    button.setAttribute("aria-pressed", "true");
     button.classList.add("is-active");
 
     const filter = button.dataset.filter;
@@ -172,8 +173,8 @@ function youtubeSection(project) {
       </div>
       <div class="video-frame">
         <iframe
-          src="https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&playsinline=1&rel=0"
-          title="${project.title} video"
+          src="https://www.youtube.com/embed/${project.youtubeId}?playsinline=1&rel=0"
+          loading="lazy" title="${project.title} video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
       </div>
@@ -210,6 +211,23 @@ function setupMobileNav() {
   });
 }
 
+function setupTheme() {
+  const button = qs('[data-theme-toggle]');
+  function update() {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    button.innerHTML = `${dark ? 'Light' : 'Dark'} <span aria-hidden="true">◐</span>`;
+    button.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+    button.setAttribute('aria-pressed', String(dark));
+  }
+  button.addEventListener('click', () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('portfolio-theme', theme); } catch (_) {}
+    update();
+  });
+  update();
+}
+setupTheme();
 renderProfileText();
 renderFeaturedProjects();
 renderAllProjects();
