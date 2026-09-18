@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mechengrfaisal.com/</loc></url>
-  <url><loc>https://mechengrfaisal.com/projects.html</loc></url>
-  <url><loc>https://mechengrfaisal.com/about.html</loc></url>
-  <url><loc>https://mechengrfaisal.com/resume.html</loc></url>
-  <url><loc>https://mechengrfaisal.com/contact.html</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=pentagon-robot</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=microscopy-image-classification</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=residential-hvac-load-analysis</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=ansys-exhaust-manifold</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=cantilever-bridge</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=fidget-toy</loc></url>
-  <url><loc>https://mechengrfaisal.com/project.html?slug=phone-stand</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/</loc></url>
+  <url><loc>https://mechengrfaisal.com/about/</loc></url>
+  <url><loc>https://mechengrfaisal.com/resume/</loc></url>
+  <url><loc>https://mechengrfaisal.com/contact/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/pentagon-robot/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/microscopy-image-classification/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/residential-hvac-load-analysis/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/ansys-exhaust-manifold/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/cantilever-bridge/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/fidget-toy/</loc></url>
+  <url><loc>https://mechengrfaisal.com/projects/phone-stand/</loc></url>
 </urlset>

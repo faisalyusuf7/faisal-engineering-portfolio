@@ -8,7 +8,7 @@ Build a GitHub Pages-ready engineering portfolio for Faisal Yusuf Ughratdar, ins
 
 ## Current Stack
 
-- Static HTML/CSS/JavaScript. No package install or build step required.
+- Static HTML/CSS/JavaScript. No package install required. Run `node scripts/build.mjs` to generate deployable `dist/`, and `node scripts/check.mjs` to verify it.
 - Entry pages:
   - `index.html`
   - `projects.html`
@@ -80,7 +80,9 @@ The repo can be deployed to GitHub Pages either by:
 1. Creating a GitHub repo, pushing this folder, and enabling GitHub Pages with GitHub Actions.
 2. Or using GitHub Desktop/GitHub app to publish the folder, then selecting the GitHub Pages workflow.
 
-The workflow uploads the static site directly from the repository root.
+The workflow builds and validates the site, then uploads only `dist/`. Root HTML files are source templates. Public routes are `/`, `/projects/`, `/about/`, `/resume/`, `/contact/`, and `/projects/<slug>/`. Old `.html` URLs redirect in the browser. Use root-relative `/assets/...` paths. The build generates project pages and the deployed sitemap from `data.js`.
+
+Projects support an optional `video` object for native MP4/WebM playback with controls, poster images, and captions; see README.md for the schema. Existing YouTube embeds remain supported. Larger video libraries should use external video delivery; no hosting migration is required for browser animations.
 
 ## September 2026 redesign
 - Audience: mechanical design and robotics roles.
@@ -91,4 +93,4 @@ The workflow uploads the static site directly from the repository root.
 - Domain purchased through GoDaddy: mechengrfaisal.com. GitHub Pages custom domain configured; GoDaddy A records and www CNAME verified. HTTPS certificate approved for apex and www; HTTPS enforcement enabled. Secure apex and www redirect verified.
 - Primary domain: https://mechengrfaisal.com/
 - Previous site: https://faisalyusuf7.github.io/faisal-engineering-portfolio/
-- Local preview: python -m http.server 8765 --bind 127.0.0.1
+- Local preview: node scripts/build.mjs, then python -m http.server 8765 --bind 127.0.0.1 --directory dist

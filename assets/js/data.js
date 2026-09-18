@@ -6,8 +6,8 @@ const projects = [
     category: "Robotics",
     year: "August 2025 - May 2026",
     role: "Mechanical design, fabrication, controls integration",
-    hero: "assets/media/projects/pentagon-robot/expo-poster.jpg",
-    thumbnail: "assets/media/projects/pentagon-robot/expo-poster.jpg",
+    hero: "/assets/media/projects/pentagon-robot/expo-poster.jpg",
+    thumbnail: "/assets/media/projects/pentagon-robot/expo-poster.jpg",
     youtubeId: "VL2kFgpxKj4",
     summary:
       "Low-cost five-bar pick-and-place robot designed and fabricated to transfer ping-pong balls between matrix locations.",
@@ -35,38 +35,38 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/pentagon-robot/build-view-1.jpeg",
+        src: "/assets/media/projects/pentagon-robot/build-view-1.jpeg",
         alt: "Pentagon Robot prototype front view",
       },
       {
-        src: "assets/media/projects/pentagon-robot/build-view-2.jpeg",
+        src: "/assets/media/projects/pentagon-robot/build-view-2.jpeg",
         alt: "Pentagon Robot prototype with electronics and mechanism visible",
       },
       {
-        src: "assets/media/projects/pentagon-robot/assembly-detail.jpeg",
+        src: "/assets/media/projects/pentagon-robot/assembly-detail.jpeg",
         alt: "Mechanical assembly detail for the Pentagon Robot",
       },
       {
-        src: "assets/media/projects/pentagon-robot/photo-output.jpg",
+        src: "/assets/media/projects/pentagon-robot/photo-output.jpg",
         alt: "Pentagon Robot photo collage showing the five-bar arm, end effector, and ping pong ball pick-and-place setup",
       },
       {
-        src: "assets/media/projects/pentagon-robot/cad-workspace.png",
+        src: "/assets/media/projects/pentagon-robot/cad-workspace.png",
         alt: "CAD workspace for the five-bar robot",
       },
       {
-        src: "assets/media/projects/pentagon-robot/cad-assembly.png",
+        src: "/assets/media/projects/pentagon-robot/cad-assembly.png",
         alt: "SolidWorks assembly model of the Pentagon Robot",
       },
       {
-        src: "assets/media/projects/pentagon-robot/control-layout.png",
+        src: "/assets/media/projects/pentagon-robot/control-layout.png",
         alt: "Controls layout screenshot for the robot system",
       },
     ],
     documents: [
       {
         label: "Project Poster",
-        href: "assets/media/projects/pentagon-robot/pentagon-robot-poster.pdf",
+        href: "/assets/media/projects/pentagon-robot/pentagon-robot-poster.pdf",
       },
     ],
   },
@@ -77,8 +77,8 @@ const projects = [
     category: "Machine Learning",
     year: "Spring 2026",
     role: "Python modeling, validation, performance analysis",
-    hero: "assets/media/projects/microscopy-image-classification/sample-train-images.png",
-    thumbnail: "assets/media/projects/microscopy-image-classification/sample-train-images.png",
+    hero: "/assets/media/projects/microscopy-image-classification/sample-train-images.png",
+    thumbnail: "/assets/media/projects/microscopy-image-classification/sample-train-images.png",
     summary:
       "Image-classification workflow comparing traditional machine learning, a custom CNN, and transfer learning for microscopy image classes.",
     challenge:
@@ -95,35 +95,35 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/microscopy-image-classification/model-comparison-chart.png",
+        src: "/assets/media/projects/microscopy-image-classification/model-comparison-chart.png",
         alt: "Model comparison chart for random forest, baseline CNN, and ResNet18 metrics",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/confusion-matrix-comparison.png",
+        src: "/assets/media/projects/microscopy-image-classification/confusion-matrix-comparison.png",
         alt: "Cross-model confusion matrix comparison for microscopy image classification",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/classwise-f1-comparison.png",
+        src: "/assets/media/projects/microscopy-image-classification/classwise-f1-comparison.png",
         alt: "Classwise F1 score comparison across model types",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/rf-featurization-panel.png",
+        src: "/assets/media/projects/microscopy-image-classification/rf-featurization-panel.png",
         alt: "Random forest PCA featurization panel showing original image, resized image, and flattened vector",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/rf-pca-reconstructions.png",
+        src: "/assets/media/projects/microscopy-image-classification/rf-pca-reconstructions.png",
         alt: "PCA reconstruction comparison showing image quality across principal component counts",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/rf-pca-scatter.png",
+        src: "/assets/media/projects/microscopy-image-classification/rf-pca-scatter.png",
         alt: "PCA scatter plots comparing train and test image feature projections",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/resnet-gradcam-examples.png",
+        src: "/assets/media/projects/microscopy-image-classification/resnet-gradcam-examples.png",
         alt: "ResNet18 Grad-CAM examples showing attention regions for microscopy image predictions",
       },
       {
-        src: "assets/media/projects/microscopy-image-classification/resnet-embedding-projection.png",
+        src: "/assets/media/projects/microscopy-image-classification/resnet-embedding-projection.png",
         alt: "ResNet18 embedding projection showing class separation across actin, mitochondria, and nucleus",
       },
     ],
@@ -135,8 +135,8 @@ const projects = [
     category: "Thermal",
     year: "Spring 2026",
     role: "HVAC load calculations, heat transfer, Excel modeling",
-    hero: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
-    thumbnail: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+    hero: "/assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+    thumbnail: "/assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
     summary:
       "Excel-based HVAC load model calculating heating and cooling requirements for a 1,000 ft2 Chicago residence.",
     challenge:
@@ -153,27 +153,27 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/cooling-rts.png",
         alt: "Hourly cooling load chart with sensible, latent, and total cooling loads",
       },
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/heating-load.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/heating-load.png",
         alt: "Peak heating load by building component",
       },
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/infiltration.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/infiltration.png",
         alt: "Hourly infiltration chart with flow and sensible load",
       },
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/sol-air.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/sol-air.png",
         alt: "Sol-air temperature by building surface over 24 hours",
       },
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/solar.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/solar.png",
         alt: "Total solar irradiation by surface over 24 hours",
       },
       {
-        src: "assets/media/projects/residential-hvac-load-analysis/weather.png",
+        src: "/assets/media/projects/residential-hvac-load-analysis/weather.png",
         alt: "Hourly outdoor design dry-bulb temperature",
       },
     ],
@@ -185,8 +185,8 @@ const projects = [
     category: "Simulation",
     year: "2025",
     role: "FEA, thermal analysis, report synthesis",
-    hero: "assets/media/projects/ansys-exhaust-manifold/elastic-strain-no-convection.png",
-    thumbnail: "assets/media/projects/ansys-exhaust-manifold/temperature-with-convection.png",
+    hero: "/assets/media/projects/ansys-exhaust-manifold/elastic-strain-no-convection.png",
+    thumbnail: "/assets/media/projects/ansys-exhaust-manifold/temperature-with-convection.png",
     summary:
       "ANSYS study comparing exhaust manifold behavior under thermal loading with and without convection and radiation effects.",
     challenge:
@@ -203,27 +203,27 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/elastic-strain-no-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/elastic-strain-no-convection.png",
         alt: "Equivalent elastic strain result without convection and radiation",
       },
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/elastic-strain-with-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/elastic-strain-with-convection.png",
         alt: "Equivalent elastic strain result with convection and radiation",
       },
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/total-deformation-no-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/total-deformation-no-convection.png",
         alt: "Total deformation result without convection and radiation",
       },
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/total-deformation-with-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/total-deformation-with-convection.png",
         alt: "Total deformation result with convection and radiation",
       },
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/temperature-no-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/temperature-no-convection.png",
         alt: "Temperature result without convection and radiation",
       },
       {
-        src: "assets/media/projects/ansys-exhaust-manifold/temperature-with-convection.png",
+        src: "/assets/media/projects/ansys-exhaust-manifold/temperature-with-convection.png",
         alt: "Temperature result with convection and radiation",
       },
     ],
@@ -235,8 +235,8 @@ const projects = [
     category: "Design",
     year: "2025",
     role: "CAD, drawings, structural validation",
-    hero: "assets/media/projects/cantilever-bridge/engineering-drawing.jpg",
-    thumbnail: "assets/media/projects/cantilever-bridge/bridge-capture.jpg",
+    hero: "/assets/media/projects/cantilever-bridge/engineering-drawing.jpg",
+    thumbnail: "/assets/media/projects/cantilever-bridge/bridge-capture.jpg",
     summary:
       "A CAD-driven bridge design exercise combining engineering drawings, geometry refinement, and strain analysis.",
     challenge:
@@ -253,15 +253,15 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/cantilever-bridge/engineering-drawing.jpg",
+        src: "/assets/media/projects/cantilever-bridge/engineering-drawing.jpg",
         alt: "Dimensioned engineering drawing for the cantilever bridge",
       },
       {
-        src: "assets/media/projects/cantilever-bridge/strain-result.jpg",
+        src: "/assets/media/projects/cantilever-bridge/strain-result.jpg",
         alt: "Bridge strain analysis result",
       },
       {
-        src: "assets/media/projects/cantilever-bridge/bridge-capture.jpg",
+        src: "/assets/media/projects/cantilever-bridge/bridge-capture.jpg",
         alt: "Bridge model capture",
       },
     ],
@@ -273,8 +273,8 @@ const projects = [
     category: "Product Design",
     year: "2025",
     role: "CAD, FDM printing, prototype refinement",
-    hero: "assets/media/projects/fidget-toy/printed-prototype.png",
-    thumbnail: "assets/media/projects/fidget-toy/printed-prototype.png",
+    hero: "/assets/media/projects/fidget-toy/printed-prototype.png",
+    thumbnail: "/assets/media/projects/fidget-toy/printed-prototype.png",
     summary:
       "A compact 3D printed fidget mechanism that explores tactile motion, printability, and ergonomic hand feel.",
     challenge:
@@ -291,11 +291,11 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/fidget-toy/printed-prototype.png",
+        src: "/assets/media/projects/fidget-toy/printed-prototype.png",
         alt: "Printed fidget toy prototype",
       },
       {
-        src: "assets/media/projects/fidget-toy/cad-model.png",
+        src: "/assets/media/projects/fidget-toy/cad-model.png",
         alt: "CAD model of the fidget toy",
       },
     ],
@@ -307,8 +307,8 @@ const projects = [
     category: "Product Design",
     year: "2025",
     role: "CAD modeling and design refinement",
-    hero: "assets/media/projects/phone-stand/cad-render.png",
-    thumbnail: "assets/media/projects/phone-stand/cad-render.png",
+    hero: "/assets/media/projects/phone-stand/cad-render.png",
+    thumbnail: "/assets/media/projects/phone-stand/cad-render.png",
     summary:
       "A desktop phone stand concept focused on support angle, curved contact geometry, and printable structure.",
     challenge:
@@ -325,7 +325,7 @@ const projects = [
     ],
     gallery: [
       {
-        src: "assets/media/projects/phone-stand/cad-render.png",
+        src: "/assets/media/projects/phone-stand/cad-render.png",
         alt: "CAD render of the phone stand",
       },
     ],
@@ -338,7 +338,7 @@ const profile = {
   location: "Chicago, IL",
   email: "faisalyusufd@gmail.com",
   linkedin: "https://linkedin.com/in/mechengineerfaisal",
-  resume: "assets/media/resume/faisal-ughratdar-resume.pdf",
+  resume: "/assets/media/resume/faisal-ughratdar-resume.pdf",
   degree: "B.S. Mechanical Engineering, University of Illinois Chicago",
   graduation: "Graduated May 2026",
   summary:

@@ -15,7 +15,7 @@ function bySlug(slug) {
 
 function projectCard(project) {
   return `
-    <a class="project-card ${project.thumbnail ? "" : "project-card--plain"}" href="project.html?slug=${project.slug}" data-category="${project.category}">
+    <a class="project-card ${project.thumbnail ? "" : "project-card--plain"}" href="/projects/${project.slug}/" data-category="${project.category}">
       ${project.thumbnail ? `<div class="project-card__image"><img src="${project.thumbnail}" alt="${project.title}" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>` : ""}
       <span class="project-card__category">${project.category}</span>
       <div class="project-card__body">
@@ -94,9 +94,9 @@ function renderProjectPage() {
   if (!mount) return;
 
   const params = new URLSearchParams(window.location.search);
-  const project = bySlug(params.get("slug"));
+  const project = bySlug(mount.dataset.projectSlug || params.get("slug"));
   document.title = `${project.title} | ${profile.name}`;
-  const canonical = `https://mechengrfaisal.com/project.html?slug=${encodeURIComponent(project.slug)}`;
+  const canonical = `https://mechengrfaisal.com/projects/${encodeURIComponent(project.slug)}/`;
   qs('link[rel="canonical"]').href = canonical;
   qs('meta[property="og:url"]').content = canonical;
   qs('meta[property="og:title"]').content = document.title;
@@ -110,7 +110,7 @@ function renderProjectPage() {
       ${project.hero ? `<img src="${project.hero}" alt="${project.title}">` : ""}
       ${project.hero ? `<div class="project-hero__overlay"></div>` : ""}
       <div class="project-hero__content shell">
-        <a class="back-link" href="projects.html">Back to projects</a>
+        <a class="back-link" href="/projects/">Back to projects</a>
         <p>${project.category} / ${project.year}</p>
         <h1>${project.title}</h1>
         <span>${project.subtitle}</span>
@@ -148,7 +148,7 @@ function renderProjectPage() {
       </aside>
     </section>
 
-    ${project.youtubeId ? youtubeSection(project) : ""}
+    ${project.video?.sources?.length ? nativeVideoSection(project) : project.youtubeId ? youtubeSection(project) : ""}
 
     ${projectGallery.length ? `
       <section class="section shell">
@@ -169,6 +169,27 @@ function renderProjectPage() {
       </div>
     </section>
     ` : ""}
+  `;
+}
+
+function escapeMarkup(value) {
+  return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+}
+
+function nativeVideoSection(project) {
+  const video = project.video;
+  return `
+    <section class="section shell video-section">
+      <div class="section-heading"><p class="eyebrow">Video</p><h2>${escapeMarkup(video.title || 'Build Footage')}</h2></div>
+      <div class="video-frame">
+        <video controls playsinline preload="none" aria-label="${escapeMarkup(project.title)} video"${video.poster ? ` poster="${escapeMarkup(video.poster)}"` : ''}>
+          ${video.sources.map(source => `<source src="${escapeMarkup(source.src)}" type="${escapeMarkup(source.type)}">`).join('')}
+          ${(video.captions || []).map(track => `<track kind="captions" src="${escapeMarkup(track.src)}" srclang="${escapeMarkup(track.language)}" label="${escapeMarkup(track.label)}"${track.default ? ' default' : ''}>`).join('')}
+          Your browser does not support embedded video.
+        </video>
+      </div>
+      <p><a href="${escapeMarkup(video.sources[0].src)}">Open video file</a></p>
+    </section>
   `;
 }
 
