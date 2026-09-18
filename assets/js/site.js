@@ -270,17 +270,70 @@ function setupLightbox() {
   document.addEventListener("click", (event) => {
     const tile = event.target.closest("[data-lightbox]");
     if (!tile) return;
+    const gallery = tile.closest('.media-grid');
+    const photos = gallery ? qsa('[data-lightbox]', gallery) : [tile];
+    let index = photos.indexOf(tile);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const dialog = document.createElement("dialog");
     dialog.className = "lightbox";
+    dialog.setAttribute('aria-label', 'Project photo gallery');
     dialog.innerHTML = `
-      <button type="button" aria-label="Close image">x</button>
-      ${tile.hasAttribute('data-rotate-ccw') ? '<div class="photo-rotate-ccw">' : ''}<img src="${tile.dataset.lightbox}" alt="${tile.dataset.alt || ""}">${tile.hasAttribute('data-rotate-ccw') ? '</div>' : ''}
+      <button class="lightbox-close" type="button" aria-label="Close image" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg></button>
+      <div class="lightbox-stage"></div>
+      <div class="lightbox-controls">
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="nav-frame" d="M11 4H6a2 2 0 0 0-2 2v5m17-7h5a2 2 0 0 1 2 2v5M4 21v5a2 2 0 0 0 2 2h5m10 0h5a2 2 0 0 0 2-2v-5"/><path class="nav-arrow" d="m15 10-6 6 6 6m-6-6h14"/></svg></button>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next photo"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="nav-frame" d="M11 4H6a2 2 0 0 0-2 2v5m17-7h5a2 2 0 0 1 2 2v5M4 21v5a2 2 0 0 0 2 2h5m10 0h5a2 2 0 0 0 2-2v-5"/><path class="nav-arrow" d="m17 10 6 6-6 6m6-6H9"/></svg></button>
+      </div>
+      <span class="lightbox-status" role="status" aria-live="polite" aria-atomic="true"></span>
     `;
+    const stage = qs('.lightbox-stage', dialog);
+    const previous = qs('.lightbox-prev', dialog);
+    const next = qs('.lightbox-next', dialog);
+    const close = qs('.lightbox-close', dialog);
+    function showPhoto(direction = 0) {
+      const focusedControl = document.activeElement;
+      const selected = photos[index];
+      const photo = document.createElement('img');
+      photo.alt = selected.dataset.alt || '';
+      photo.src = selected.dataset.lightbox;
+      let frame = photo;
+      if (selected.hasAttribute('data-rotate-ccw')) {
+        frame = document.createElement('div');
+        frame.className = 'photo-rotate-ccw';
+        frame.appendChild(photo);
+      }
+      stage.replaceChildren(frame);
+      previous.hidden = index === 0;
+      next.hidden = index === photos.length - 1;
+      qs('.lightbox-controls', dialog).hidden = photos.length < 2;
+      qs('.lightbox-status', dialog).textContent = `Photo ${index + 1} of ${photos.length}: ${photo.alt}`;
+      if (focusedControl === previous && previous.hidden) (next.hidden ? close : next).focus();
+      if (focusedControl === next && next.hidden) (previous.hidden ? close : previous).focus();
+      stage.getAnimations().forEach(animation => animation.cancel());
+      if (direction && !reducedMotion.matches) {
+        stage.animate([{ opacity: 0.3, transform: `translateX(${direction * 16}px)` }, { opacity: 1, transform: 'translateX(0)' }], { duration: 220, easing: 'ease-out' });
+      }
+    }
+    function move(direction) {
+      const target = index + direction;
+      if (target < 0 || target >= photos.length) return;
+      index = target;
+      showPhoto(direction);
+    }
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    dialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        move(event.key === 'ArrowLeft' ? -1 : 1);
+      }
+    });
+    showPhoto();
     document.body.appendChild(dialog);
     dialog.showModal();
-    qs("button", dialog).addEventListener("click", () => dialog.close());
-    dialog.addEventListener("close", () => dialog.remove());
+    close.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("close", () => { dialog.remove(); tile.focus(); });
   });
 }
 
