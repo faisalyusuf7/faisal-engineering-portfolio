@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile, cp, rm } from 'node:fs/promises';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = path.join(root, 'dist');
@@ -12,8 +13,18 @@ const { projects, profile } = context.window.portfolioData;
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const routes = ['projects', 'about', 'resume', 'contact'];
 const urls = ['/'];
+const assetVersions = new Map();
+for (const asset of ['/assets/css/styles.css', '/assets/js/theme.js', '/assets/js/data.js', '/assets/js/site.js']) {
+  const content = await readFile(path.join(root, asset));
+  assetVersions.set(asset, createHash('sha256').update(content).digest('hex').slice(0, 12));
+}
 
 async function write(file, content) {
+  if (file.endsWith('.html')) {
+    for (const [asset, version] of assetVersions) {
+      content = content.replaceAll(`"${asset}"`, `"${asset}?v=${version}"`);
+    }
+  }
   const target = path.join(out, file);
   await mkdir(path.dirname(target), { recursive: true });
   await writeFile(target, content);
@@ -27,7 +38,8 @@ function redirect(destination, dynamic = '') {
 await rm(out, { recursive: true, force: true });
 await mkdir(out, { recursive: true });
 await cp(path.join(root, 'assets'), path.join(out, 'assets'), { recursive: true });
-for (const file of ['index.html', 'robots.txt', '.nojekyll']) {
+await write('index.html', await readFile(path.join(root, 'index.html'), 'utf8'));
+for (const file of ['robots.txt', '.nojekyll']) {
   await cp(path.join(root, file), path.join(out, file));
 }
 for (const route of routes) {
