@@ -37,6 +37,7 @@ const projects = [
       {
         src: "/assets/media/projects/pentagon-robot/build-view-1.jpeg",
         alt: "Pentagon Robot prototype front view",
+        rotateCCW: true,
       },
       {
         src: "/assets/media/projects/pentagon-robot/build-view-2.jpeg",

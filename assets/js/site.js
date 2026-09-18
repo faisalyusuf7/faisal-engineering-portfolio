@@ -160,8 +160,8 @@ function renderProjectPage() {
         ${projectGallery
           .map(
             (image) => `
-              <button class="media-tile" type="button" data-lightbox="${image.src}" data-alt="${image.alt}">
-                <img src="${image.src}" alt="${image.alt}" loading="lazy">
+              <button class="media-tile${image.rotateCCW ? ' media-tile--rotated' : ''}" type="button" data-lightbox="${image.src}" data-alt="${image.alt}"${image.rotateCCW ? ' data-rotate-ccw' : ''}>
+                ${image.rotateCCW ? '<span class="photo-rotate-ccw">' : ''}<img src="${image.src}" alt="${image.alt}" loading="lazy">${image.rotateCCW ? '</span>' : ''}
               </button>
             `
           )
@@ -275,7 +275,7 @@ function setupLightbox() {
     dialog.className = "lightbox";
     dialog.innerHTML = `
       <button type="button" aria-label="Close image">x</button>
-      <img src="${tile.dataset.lightbox}" alt="${tile.dataset.alt || ""}">
+      ${tile.hasAttribute('data-rotate-ccw') ? '<div class="photo-rotate-ccw">' : ''}<img src="${tile.dataset.lightbox}" alt="${tile.dataset.alt || ""}">${tile.hasAttribute('data-rotate-ccw') ? '</div>' : ''}
     `;
     document.body.appendChild(dialog);
     dialog.showModal();

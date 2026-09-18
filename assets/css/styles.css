@@ -611,6 +611,27 @@ p {
 .lightbox img {
   max-height:80vh;
   object-fit:contain}
+/* Rotate the portrait robot photo without altering or cropping its pixels. */
+.media-tile--rotated { width:100%; }
+.photo-rotate-ccw {
+  display:block;
+  position:relative;
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+.lightbox .photo-rotate-ccw { width:min(82vw, 106.6667vh); }
+.photo-rotate-ccw img {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:75%;
+  height:133.333333%;
+  max-width:none;
+  max-height:none;
+  transform:translate(-50%, -50%) rotate(-90deg);
+  object-fit:contain;
+}
 .lightbox button {
   position:absolute;
   right:8px;
